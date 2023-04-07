@@ -14,7 +14,7 @@ F(1) = 1; G(1) = 1; F(n) = 2*F(n–1) – G(n–1), G(n) = 2*F(n–1) // G(n–1
 import time
 import matplotlib.pyplot as plt
 
-"""
+
 def recursive_f(n):  # рекурсивное решение
     if n == 2:
         return 1
@@ -27,7 +27,7 @@ def recursive_g(n):  # рекурсивное решение
         return 1
     else:
         return 2 * recursive_f(n - 1) // recursive_g(n - 1)
-"""
+
 
 def iterative_f(n):
     gn = [1] * (n + 1)
@@ -56,20 +56,20 @@ try:
         recursive_values = []
         iterative_times = []
         iterative_values = []
-        n_values = list(range(2, n + 1,100))
+        n_values = list(range(2, n + 1))
 
         for n in n_values:  # заполнение списков данными
-            """
+
             start = time.time()
             recursive_values.append(recursive_f(n))
             end = time.time()
             recursive_times.append(end - start)
-            """
+
             start = time.time()
             iterative_values.append(iterative_f(n))
             end = time.time()
             iterative_times.append(end - start)
-        """
+
         table_data = []  # создание и заполнение последующей таблицы
         for i, n in enumerate(n_values):
             table_data.append([n, recursive_times[i], iterative_times[i], recursive_values[i], iterative_values[i]])
@@ -79,11 +79,9 @@ try:
         print('-' * 105)
         for data in table_data:
             print('{:<7}|{:<25}|{:<25}|{:<25}|{:<25}'.format(data[0], data[1], data[2], data[3], data[4]))
-"""
+
         plt.plot(n_values, iterative_times, label='Итерация')
-        """
         plt.plot(n_values, recursive_times, label='Рекурсия')  # вывод графиков
-        """
         plt.xlabel('n')
         plt.ylabel('Время (с)')
         plt.title('Сравнение рекурсивного и итерационного подхода')
